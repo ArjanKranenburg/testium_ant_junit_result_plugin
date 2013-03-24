@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-import net.sf.testium.configuration.SurefirePluginConfiguration;
+import net.sf.testium.configuration.AntJunitResultPluginConfiguration;
 
 import org.testtoolinterfaces.testresult.ResultSummary;
 import org.testtoolinterfaces.testresult.TestCaseResult;
@@ -22,11 +22,11 @@ import org.testtoolinterfaces.testsuite.LooseTestInterfaceList;
 import org.testtoolinterfaces.utils.Trace;
 import org.testtoolinterfaces.utils.Warning;
 
-public class SurefireReportWriter implements TestGroupResultWriter
+public class AntJunitResultPluginWriter implements TestGroupResultWriter
 {
 	private final File myReportsDir;
 	
-	public SurefireReportWriter(SurefirePluginConfiguration config)
+	public AntJunitResultPluginWriter(AntJunitResultPluginConfiguration config)
 	{
 		myReportsDir = config.getReportsDir();
         if (!myReportsDir.exists())

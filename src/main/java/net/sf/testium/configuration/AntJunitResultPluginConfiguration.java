@@ -2,11 +2,11 @@ package net.sf.testium.configuration;
 
 import java.io.File;
 
-public class SurefirePluginConfiguration
+public class AntJunitResultPluginConfiguration
 {
 	private final File myReportsDir;
 	
-	public SurefirePluginConfiguration(File aReportsDir)
+	public AntJunitResultPluginConfiguration(File aReportsDir)
 	{
 		myReportsDir = aReportsDir;
 	}

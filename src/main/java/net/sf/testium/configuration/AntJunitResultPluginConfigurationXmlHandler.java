@@ -10,7 +10,7 @@ import org.testtoolinterfaces.utils.XmlHandler;
 import org.xml.sax.Attributes;
 import org.xml.sax.XMLReader;
 
-public class SurefireReportConfigurationXmlHandler extends XmlHandler {
+public class AntJunitResultPluginConfigurationXmlHandler extends XmlHandler {
 	private static final String START_ELEMENT = "SurefireReportConfiguration";
 
 	private static final String	CFG_REPORTSDIR	= "ReportsDir";
@@ -19,7 +19,7 @@ public class SurefireReportConfigurationXmlHandler extends XmlHandler {
 
 	private File myReportsDir;
 	
-	public SurefireReportConfigurationXmlHandler(XMLReader anXmlReader, RunTimeData anRtData)
+	public AntJunitResultPluginConfigurationXmlHandler(XMLReader anXmlReader, RunTimeData anRtData)
 	{
 		super(anXmlReader, START_ELEMENT);
 		
@@ -73,9 +73,9 @@ public class SurefireReportConfigurationXmlHandler extends XmlHandler {
 		}
 	}
 
-	public SurefirePluginConfiguration getConfiguration()
+	public AntJunitResultPluginConfiguration getConfiguration()
 	{
-		return new SurefirePluginConfiguration(myReportsDir);
+		return new AntJunitResultPluginConfiguration(myReportsDir);
 	}
 
 }

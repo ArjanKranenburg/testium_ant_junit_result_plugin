@@ -9,9 +9,9 @@ import javax.xml.parsers.SAXParserFactory;
 
 import net.sf.testium.Testium;
 import net.sf.testium.configuration.ConfigurationException;
-import net.sf.testium.configuration.SurefirePluginConfiguration;
-import net.sf.testium.configuration.SurefireReportConfigurationXmlHandler;
-import net.sf.testium.reports.SurefireReportWriter;
+import net.sf.testium.configuration.AntJunitResultPluginConfiguration;
+import net.sf.testium.configuration.AntJunitResultPluginConfigurationXmlHandler;
+import net.sf.testium.reports.AntJunitResultPluginWriter;
 
 import org.testtoolinterfaces.utils.RunTimeData;
 import org.testtoolinterfaces.utils.Trace;
@@ -23,9 +23,9 @@ import org.xml.sax.XMLReader;
  * @author Arjan Kranenburg
  *
  */
-public final class SurefireReportPlugin implements Plugin
+public final class AntJunitResultPlugin implements Plugin
 {
-	public SurefireReportPlugin()
+	public AntJunitResultPlugin()
 	{
 		super();
 		Trace.println(Trace.CONSTRUCTOR);
@@ -36,24 +36,24 @@ public final class SurefireReportPlugin implements Plugin
 	{
 		Trace.println(Trace.UTIL, "loadPlugIn( " + aPluginCollection + " )", true );
 
-		SurefirePluginConfiguration config = readConfigFiles( anRtData );
+		AntJunitResultPluginConfiguration config = readConfigFiles( anRtData );
 		
-		SurefireReportWriter surefireReportWriter = new SurefireReportWriter( config );
+		AntJunitResultPluginWriter surefireReportWriter = new AntJunitResultPluginWriter( config );
 		aPluginCollection.addTestGroupResultWriter(surefireReportWriter);
 	}
 
-	public SurefirePluginConfiguration readConfigFiles( RunTimeData anRtData ) throws ConfigurationException
+	public AntJunitResultPluginConfiguration readConfigFiles( RunTimeData anRtData ) throws ConfigurationException
 	{
 		Trace.println(Trace.UTIL);
 
 		File configDir = (File) anRtData.getValue(Testium.CONFIGDIR);
 		File configFile = new File( configDir, "surefireReport.xml" );
-		SurefirePluginConfiguration globalConfig = readConfigFile( configFile, anRtData );
+		AntJunitResultPluginConfiguration globalConfig = readConfigFile( configFile, anRtData );
 		
 		return globalConfig;
 	}
 
-	public SurefirePluginConfiguration readConfigFile( File aConfigFile,
+	public AntJunitResultPluginConfiguration readConfigFile( File aConfigFile,
 			RunTimeData aRtData ) throws ConfigurationException
 	{
 		Trace.println(Trace.UTIL, "readConfigFile( " + aConfigFile.getName() + " )", true );
@@ -61,14 +61,14 @@ public final class SurefireReportPlugin implements Plugin
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setNamespaceAware(false);
         SAXParser saxParser;
-        SurefireReportConfigurationXmlHandler handler = null;
+        AntJunitResultPluginConfigurationXmlHandler handler = null;
 		try
 		{
 			saxParser = spf.newSAXParser();
 			XMLReader xmlReader = saxParser.getXMLReader();
 
 	        // create a handler
-			handler = new SurefireReportConfigurationXmlHandler(xmlReader, aRtData);
+			handler = new AntJunitResultPluginConfigurationXmlHandler(xmlReader, aRtData);
 
 	        // assign the handler to the parser
 	        xmlReader.setContentHandler(handler);
@@ -92,7 +92,7 @@ public final class SurefireReportPlugin implements Plugin
 			throw new ConfigurationException( e );
 		}
 		
-		SurefirePluginConfiguration configuration = handler.getConfiguration();
+		AntJunitResultPluginConfiguration configuration = handler.getConfiguration();
 		
 		return configuration;
 	}

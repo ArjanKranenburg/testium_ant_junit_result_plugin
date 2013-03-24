@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.sf.testium</groupId>
-  <artifactId>surefire-report-plugin</artifactId>
+  <artifactId>testium-ant-junit-result-plugin</artifactId>
   <version>0.0.3-SNAPSHOT</version>
-  <name>Testium - Surefire Report Plugin</name>
-  <description>Surefire Report Plugin for Testium</description>
-  <url>http://www.awk-test-services.com/testium/surefire-report-plugin</url>
+  <name>Testium - Ant-Junit Result Plugin</name>
+  <description>Ant-Junit result plugin for Testium</description>
+  <url>http://www.awk-test-services.com/testium</url>
   <packaging>jar</packaging>
 
   <parent>
@@ -27,9 +27,9 @@
   </licenses>
 
   <scm>
-    <connection>TBD</connection>
-    <developerConnection>TBD</developerConnection>
-    <url>TBD</url>
+    <connection>scm:git:git@github.com:ArjanKranenburg/testium_ant_junit_result_plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:ArjanKranenburg/testium_ant_junit_result_plugin.git</developerConnection>
+    <url>git@github.com:ArjanKranenburg/testium_ant_junit_result_plugin.git</url>
   </scm>
 
   <developers>
@@ -62,18 +62,11 @@
       <version>4.10</version>
       <scope>test</scope>
     </dependency>
-<!-- 
     <dependency>
-		<groupId>org.apache.maven.surefire</groupId>
-		<artifactId>surefire</artifactId>
-		<version>2.7.1</version>
+   	  <groupId>org.testtoolinterfaces</groupId>
+   	  <artifactId>testresultinterface</artifactId>
+   	  <version>0.3.12</version>
     </dependency>
- -->
-   <dependency>
-   	<groupId>org.testtoolinterfaces</groupId>
-   	<artifactId>testresultinterface</artifactId>
-   	<version>0.3.12</version>
-   </dependency>
   </dependencies>
 
 
